@@ -1,0 +1,104 @@
+
+# Main bed - small switch 
+
+- alias: Salt Light Bed Main
+  id: Mn5DQAChe9l7ckM
+  trigger:
+      platform: event
+      event_type: zha_event
+      event_data:
+        device_id: ef9ce7041b69660f7458e8cae763e1c7
+        command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.salt_light_bed_main
+
+- alias: Desk Light Bed Main
+  id: VZkDHS4pnsJXYj5
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: ef9ce7041b69660f7458e8cae763e1c7
+      command: double
+  action:
+    service: switch.toggle
+    entity_id: switch.desk_light_bed_main
+
+
+# Main bed - big switch
+
+- alias: Stand Light Bed Main
+  id: y36uC65BaKr6PES
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: de9b3e0d7188637e5e26a02bd3f98b5e
+      command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.standing_light_bed_main
+
+- alias: Desk Light Bed Main (2)
+  id: R6utKVAW1EanVfT
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: de9b3e0d7188637e5e26a02bd3f98b5e
+      command: double
+  action:
+    service: switch.toggle
+    entity_id: switch.desk_light_bed_main
+
+
+# Bathroom - double switch
+
+- alias: Light Bath Main
+  id: z6YdKe67uAZ787h
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: c6c61d5e65c8dd9fb55b398df4fff6f7
+      command: right_single
+  action:
+    service: switch.toggle
+    entity_id: switch.light_bath_main
+
+- alias: Mirror Bath Main
+  id: 7hbK40dDe5nAMSJ
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: c6c61d5e65c8dd9fb55b398df4fff6f7
+      command: right_single
+  action:
+    service: switch.toggle
+    entity_id: switch.mirror_bath_main
+
+- alias: Mirror Bath Main (2)
+  id: 2Sz8nNNSjQanNDN
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: c6c61d5e65c8dd9fb55b398df4fff6f7
+      command: right_double
+  action:
+    service: switch.toggle
+    entity_id: switch.mirror_bath_main
+
+- alias: Fan Bath Main
+  id: 27jl0nAnpmUxjZF
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: c6c61d5e65c8dd9fb55b398df4fff6f7
+      command: left_single
+  action:
+    service: switch.toggle
+    entity_id: switch.fan_bath_main

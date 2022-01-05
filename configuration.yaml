@@ -1,0 +1,76 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+frontend:
+
+mqtt:
+  client_id: home-assistant-1
+  broker: 192.168.68.116
+  port: 1883
+  username: admin
+  password: TpHYvDJHR96nsfY
+
+switch:
+  - platform: mqtt
+    name: "Standing Light Bed-main"
+    command_topic: "cmnd/standing_light_bed_main/power"
+    state_topic: "stat/standing_light_bed_main/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Desk Light Bed-main"
+    command_topic: "cmnd/desk_light_bed_main/power"
+    state_topic: "stat/desk_light_bed_main/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Salt Light Bed-main"
+    command_topic: "cmnd/salt_light_bed_main/power"
+    state_topic: "stat/salt_light_bed_main/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Fan Bath-main"
+    command_topic: "cmnd/fan_bath_main/power"
+    state_topic: "stat/fan_bath_main/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Light Bath-main"
+    command_topic: "cmnd/light_bath_main/power"
+    state_topic: "stat/light_bath_main/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Mirror Bath-main"
+    command_topic: "cmnd/mirror_bath_main/power"
+    state_topic: "stat/mirror_bath_main/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
