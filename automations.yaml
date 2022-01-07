@@ -7,7 +7,7 @@
       platform: event
       event_type: zha_event
       event_data:
-        device_id: ef9ce7041b69660f7458e8cae763e1c7
+        device_id: 9f4548e756bbdf96d3edb491029788cc
         command: single
   action:
     service: switch.toggle
@@ -19,7 +19,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: ef9ce7041b69660f7458e8cae763e1c7
+      device_id: 9f4548e756bbdf96d3edb491029788cc
       command: double
   action:
     service: switch.toggle
@@ -34,7 +34,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: de9b3e0d7188637e5e26a02bd3f98b5e
+      device_id: 472f8404b23bf6b102b102474785e077
       command: single
   action:
     service: switch.toggle
@@ -46,7 +46,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: de9b3e0d7188637e5e26a02bd3f98b5e
+      device_id: 472f8404b23bf6b102b102474785e077
       command: double
   action:
     service: switch.toggle
@@ -61,7 +61,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: c6c61d5e65c8dd9fb55b398df4fff6f7
+      device_id: ca65477b6f91da9350b8b0467683f2ab
       command: right_single
   action:
     service: switch.toggle
@@ -73,7 +73,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: c6c61d5e65c8dd9fb55b398df4fff6f7
+      device_id: ca65477b6f91da9350b8b0467683f2ab
       command: right_single
   action:
     service: switch.toggle
@@ -85,7 +85,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: c6c61d5e65c8dd9fb55b398df4fff6f7
+      device_id: ca65477b6f91da9350b8b0467683f2ab
       command: right_double
   action:
     service: switch.toggle
@@ -97,8 +97,23 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: c6c61d5e65c8dd9fb55b398df4fff6f7
+      device_id: ca65477b6f91da9350b8b0467683f2ab
       command: left_single
   action:
     service: switch.toggle
     entity_id: switch.fan_bath_main
+
+
+# 2nd floor Hallway switch
+
+- alias: 2nd floor Hallway switch
+  id: Rrquh6XU55NTiv0
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: d73b2e6ec6e6b26cb843081bb6358ffd
+      command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.lights_floor_2_hallway
