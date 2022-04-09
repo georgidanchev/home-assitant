@@ -28,29 +28,29 @@
 
 # Main bed - big switch
 
-- alias: Stand Light Bed Main
-  id: y36uC65BaKr6PES
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: 472f8404b23bf6b102b102474785e077
-      command: single
-  action:
-    service: switch.toggle
-    entity_id: switch.standing_light_bed_main
+# - alias: Stand Light Bed Main
+#   id: y36uC65BaKr6PES
+#   trigger:
+#     platform: event
+#     event_type: zha_event
+#     event_data:
+#       device_id: 472f8404b23bf6b102b102474785e077
+#       command: single
+#   action:
+#     service: switch.toggle
+#     entity_id: switch.standing_light_bed_main
 
-- alias: Desk Light Bed Main (2)
-  id: R6utKVAW1EanVfT
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: 472f8404b23bf6b102b102474785e077
-      command: double
-  action:
-    service: switch.toggle
-    entity_id: switch.desk_light_bed_main
+# - alias: Desk Light Bed Main (2)
+#   id: R6utKVAW1EanVfT
+#   trigger:
+#     platform: event
+#     event_type: zha_event
+#     event_data:
+#       device_id: 472f8404b23bf6b102b102474785e077
+#       command: double
+#   action:
+#     service: switch.toggle
+#     entity_id: switch.desk_light_bed_main
 
 
 # Bathroom - double switch
@@ -117,3 +117,29 @@
   action:
     service: switch.toggle
     entity_id: switch.lights_floor_2_hallway
+
+# 1st floor living room
+
+- alias: Main light living room
+  id: lbqe6h429iwdd0
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 8fa3028d784f5e7a5a08f0e85f3d36df
+      command: left_single
+  action:
+    service: switch.toggle
+    entity_id: switch.main_living_room_light
+
+- alias: Second light living room
+  id: s6puuui0og220h
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 8fa3028d784f5e7a5a08f0e85f3d36df
+      command: right_single
+  action:
+    service: switch.toggle
+    entity_id: switch.second_living_room_light
