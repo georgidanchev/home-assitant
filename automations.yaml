@@ -1,17 +1,22 @@
-
-# Main bed - small switch 
+# Main bed - small switch
 
 - alias: Salt Light Bed Main
   id: Mn5DQAChe9l7ckM
   trigger:
-      platform: event
-      event_type: zha_event
-      event_data:
-        device_id: 9f4548e756bbdf96d3edb491029788cc
-        command: single
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 9f4548e756bbdf96d3edb491029788cc
+      command: single
   action:
     service: switch.toggle
     entity_id: switch.salt_light_bed_main
+
+# - alias: Main bedroom light
+#   id: FVYHeHUy8n2Hm
+#   action:
+#     service: switch.toggle
+#     entity_id: switch.main_bedroom_light
 
 - alias: Desk Light Bed Main
   id: VZkDHS4pnsJXYj5
@@ -24,7 +29,6 @@
   action:
     service: switch.toggle
     entity_id: switch.desk_light_bed_main
-
 
 # Main bed - big switch
 
@@ -52,6 +56,19 @@
 #     service: switch.toggle
 #     entity_id: switch.desk_light_bed_main
 
+# Tertiary bedroom
+
+- alias: Tertiary bedroom light
+  id: atUOL6c5M1g3
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 472f8404b23bf6b102b102474785e077
+      command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.tertiary_bedroom_light
 
 # Bathroom - double switch
 
@@ -102,7 +119,6 @@
   action:
     service: switch.toggle
     entity_id: switch.fan_bath_main
-
 
 # 2nd floor Hallway switch
 

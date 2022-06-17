@@ -1,4 +1,3 @@
-
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
@@ -40,6 +39,15 @@ switch:
     retain: true
 
   - platform: mqtt
+    name: "Main bedroom light"
+    command_topic: "cmnd/main_bedroom_light/power"
+    state_topic: "stat/main_bedroom_light/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
     name: "Desk Light Bed-main"
     command_topic: "cmnd/desk_light_bed_main/power"
     state_topic: "stat/desk_light_bed_main/POWER"
@@ -49,9 +57,27 @@ switch:
     retain: true
 
   - platform: mqtt
+    name: "Standing Light Bed-main"
+    command_topic: "cmnd/standing_light_bed_main/power"
+    state_topic: "stat/standing_light_bed_main/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
     name: "Salt Light Bed-main"
     command_topic: "cmnd/salt_light_bed_main/power"
     state_topic: "stat/salt_light_bed_main/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Tertiary bedroom light"
+    command_topic: "cmnd/tertiary_bedroom_light/power"
+    state_topic: "stat/tertiary_bedroom_light/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
