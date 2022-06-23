@@ -75,6 +75,15 @@ switch:
     retain: true
 
   - platform: mqtt
+    name: "Secondary bedroom light"
+    command_topic: "cmnd/secondary_bedroom_light/power"
+    state_topic: "stat/secondary_bedroom_light/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
     name: "Tertiary bedroom light"
     command_topic: "cmnd/tertiary_bedroom_light/power"
     state_topic: "stat/tertiary_bedroom_light/POWER"

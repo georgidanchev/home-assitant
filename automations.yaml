@@ -56,6 +56,20 @@
 #     service: switch.toggle
 #     entity_id: switch.desk_light_bed_main
 
+# Secondary bedroom
+
+- alias: secondary bedroom light
+  id: E2WxR2nR68xR
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 66daa7816b8276bb42c12fc936e86fe3
+      command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.secondary_bedroom_light
+
 # Tertiary bedroom
 
 - alias: Tertiary bedroom light
