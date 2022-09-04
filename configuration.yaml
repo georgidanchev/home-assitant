@@ -56,23 +56,23 @@ switch:
     payload_off: "OFF"
     retain: true
 
-  - platform: mqtt
-    name: "Standing Light Bed-main"
-    command_topic: "cmnd/standing_light_bed_main/power"
-    state_topic: "stat/standing_light_bed_main/POWER"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
+  # - platform: mqtt
+  #   name: "Standing Light Bed-main"
+  #   command_topic: "cmnd/standing_light_bed_main/power"
+  #   state_topic: "stat/standing_light_bed_main/POWER"
+  #   qos: 1
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   retain: true
 
-  - platform: mqtt
-    name: "Salt Light Bed-main"
-    command_topic: "cmnd/salt_light_bed_main/power"
-    state_topic: "stat/salt_light_bed_main/POWER"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
+  # - platform: mqtt
+  #   name: "Salt Light Bed-main"
+  #   command_topic: "cmnd/salt_light_bed_main/power"
+  #   state_topic: "stat/salt_light_bed_main/POWER"
+  #   qos: 1
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   retain: true
 
   - platform: mqtt
     name: "Secondary bedroom light"
@@ -123,6 +123,15 @@ switch:
     name: "Lights Floor-2 Hallway"
     command_topic: "cmnd/lights_floor_2_hallway/power"
     state_topic: "stat/lights_floor_2_hallway/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Lights 2 Floor-2 Hallway"
+    command_topic: "cmnd/lights_2_floor_2_hallway/power"
+    state_topic: "stat/lights_2_floor_2_hallway/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
