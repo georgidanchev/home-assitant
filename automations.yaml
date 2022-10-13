@@ -24,30 +24,29 @@
     service: switch.toggle
     entity_id: switch.main_bedroom_light
 
+- alias: Main bedroom standing light
+  id: v6FyMJGArp6
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 7b612f740196587aa9ca60bbaf6cb5de
+      command: double
+  action:
+    service: switch.toggle
+    entity_id: switch.standing_light_bed_main
 
-# - alias: Main bedroom standing light
-#   id: v6FyMJGArp6
-#   trigger:
-#     platform: event
-#     event_type: zha_event
-#     event_data:
-#       device_id: 7b612f740196587aa9ca60bbaf6cb5de
-#       command: double
-#   action:
-#     service: switch.toggle
-#     entity_id: switch.standing_light_bed_main
-
-# - alias: Salt Light Bed Main
-#   id: Mn5DQAChe9l7ckM
-#   trigger:
-#     platform: event
-#     event_type: zha_event
-#     event_data:
-#       device_id: 9f4548e756bbdf96d3edb491029788cc
-#       command: single
-#   action:
-#     service: switch.toggle
-#     entity_id: switch.salt_light_bed_main
+- alias: Salt Light Bed Main
+  id: Mn5DQAChe9l7ckM
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 9f4548e756bbdf96d3edb491029788cc
+      command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.salt_light_bed_main
 
 - alias: Desk Light Bed Main
   id: VZkDHS4pnsJXYj5
