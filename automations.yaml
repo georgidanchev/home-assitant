@@ -1,100 +1,38 @@
-# Main bed - small switch
+# Master badroom
 
-- alias: Main bedroom light
-  id: FVYHeHUy8n2Hm
+- alias: Main bedroom light switch
+  id: j33namfxwh55
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 7b612f740196587aa9ca60bbaf6cb5de
+      device_id: 9d994506ad0dd4863fa3bc326677739a
       command: single
   action:
     service: switch.toggle
-    entity_id: switch.main_bedroom_light
+    entity_id: switch.master_bedroom_light
 
-- alias: Main bedroom light (2)
-  id: FVYHeEUy2n1Hm
+- alias: Main bedroom secondary light switch
+  id: zpa99yy4rlog
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 9f4548e756bbdf96d3edb491029788cc
-      command: double
-  action:
-    service: switch.toggle
-    entity_id: switch.main_bedroom_light
-
-- alias: Main bedroom standing light
-  id: v6FyMJGArp6
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: 7b612f740196587aa9ca60bbaf6cb5de
-      command: double
-  action:
-    service: switch.toggle
-    entity_id: switch.standing_light_bed_main
-
-- alias: Salt Light Bed Main
-  id: Mn5DQAChe9l7ckM
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: 9f4548e756bbdf96d3edb491029788cc
+      device_id: 360598dfb6fcb29c405664e04c225df5
       command: single
   action:
     service: switch.toggle
-    entity_id: switch.salt_light_bed_main
+    entity_id: switch.master_bedroom_light
 
-- alias: Desk Light Bed Main
-  id: VZkDHS4pnsJXYj5
+# Secondary Bedroom
+
+- alias: Secondary bedroom light switch
+  id: mhz3qxge98wz
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 9f4548e756bbdf96d3edb491029788cc
-      command: single
-  action:
-    service: switch.toggle
-    entity_id: switch.desk_light_bed_main
-
-# Main bed - big switch
-
-# - alias: Stand Light Bed Main
-#   id: y36uC65BaKr6PES
-#   trigger:
-#     platform: event
-#     event_type: zha_event
-#     event_data:
-#       device_id: 472f8404b23bf6b102b102474785e077
-#       command: single
-#   action:
-#     service: switch.toggle
-#     entity_id: switch.standing_light_bed_main
-
-# - alias: Desk Light Bed Main (2)
-#   id: R6utKVAW1EanVfT
-#   trigger:
-#     platform: event
-#     event_type: zha_event
-#     event_data:
-#       device_id: 472f8404b23bf6b102b102474785e077
-#       command: double
-#   action:
-#     service: switch.toggle
-#     entity_id: switch.desk_light_bed_main
-
-# Secondary bedroom
-
-- alias: secondary bedroom light
-  id: E2WxR2nR68xR
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: 66daa7816b8276bb42c12fc936e86fe3
+      device_id: 788a57b676e259c0159d5f17dbb9d751
       command: single
   action:
     service: switch.toggle
@@ -102,128 +40,130 @@
 
 # Tertiary bedroom
 
-- alias: Tertiary bedroom light
-  id: atUOL6c5M1g3
+- alias: Tertiary bedroom light switch
+  id: iq02a357s9gr
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 472f8404b23bf6b102b102474785e077
+      device_id: ad9b3b770878b0693ab8a99bb0a25946
       command: single
   action:
     service: switch.toggle
     entity_id: switch.tertiary_bedroom_light
 
-# Bathroom - double switch
+# Living room
 
-- alias: Light Bath Main
-  id: z6YdKe67uAZ787h
+- alias: Living room light switch
+  id: lqkvl3n7im71
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: ca65477b6f91da9350b8b0467683f2ab
+      device_id: 322093adb226b43517955621d1c95e8c
       command: right_single
   action:
     service: switch.toggle
-    entity_id: switch.light_bath_main
+    entity_id: switch.living_room_light
 
-- alias: Mirror Bath Main
-  id: 7hbK40dDe5nAMSJ
+# Dining room
+
+- alias: Dining room light switch
+  id: ep1ehalevb6d
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: ca65477b6f91da9350b8b0467683f2ab
-      command: right_single
-  action:
-    service: switch.toggle
-    entity_id: switch.mirror_bath_main
-
-- alias: Mirror Bath Main (2)
-  id: 2Sz8nNNSjQanNDN
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: ca65477b6f91da9350b8b0467683f2ab
-      command: right_double
-  action:
-    service: switch.toggle
-    entity_id: switch.mirror_bath_main
-
-- alias: Mirror Bath Main (3)
-  id: 2Sf1nNNSjAanNDM
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: ca65477b6f91da9350b8b0467683f2ab
-      command: left_double
-  action:
-    service: switch.toggle
-    entity_id: switch.mirror_bath_main
-
-- alias: Fan Bath Main
-  id: 27jl0nAnpmUxjZF
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: ca65477b6f91da9350b8b0467683f2ab
+      device_id: 322093adb226b43517955621d1c95e8c
       command: left_single
   action:
     service: switch.toggle
-    entity_id: switch.fan_bath_main
+    entity_id: switch.dining_room_light
 
-# 2nd floor Hallway switch
+# Hallways
 
-- alias: 2nd floor Hallway switch
-  id: Rrquh6XU55NTiv0
+- alias: Upper hallway light A
+  id: mnrb533c496s
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: d73b2e6ec6e6b26cb843081bb6358ffd
+      device_id: 9b14b1042b29c21fa02c4c91829283ee
       command: single
   action:
     service: switch.toggle
-    entity_id: switch.lights_floor_2_hallway
+    entity_id: switch.upper_hallway_light_a
 
-- alias: 2nd floor Hallway switch 2
-  id: 3zF2zYK3qtXyF4
+- alias: Upper hallway light B
+  id: r93teyc350mb
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: d73b2e6ec6e6b26cb843081bb6358ffd
+      device_id: 9b14b1042b29c21fa02c4c91829283ee
       command: double
   action:
     service: switch.toggle
-    entity_id: switch.lights_2_floor_2_hallway
+    entity_id: switch.upper_hallway_light_b
 
-# 1st floor living room
+# Bathroom
 
-- alias: Main light living room
-  id: lbqe6h429iwdd0
+- alias: Bathroom Lights
+  id: cjecfw4v5x8g
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 8fa3028d784f5e7a5a08f0e85f3d36df
-      command: left_single
-  action:
-    service: switch.toggle
-    entity_id: switch.main_living_room_light
-
-- alias: Second light living room
-  id: s6puuui0og220h
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: 8fa3028d784f5e7a5a08f0e85f3d36df
+      device_id: 1193c2c9517b67eaa202b5a75a9e8c57
       command: right_single
   action:
     service: switch.toggle
-    entity_id: switch.second_living_room_light
+    entity_id: switch.bathroom_lights
+
+- alias: Bathroom Mirror Light
+  id: d692ybqbogqp
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 1193c2c9517b67eaa202b5a75a9e8c57
+      command: right_single
+  action:
+    service: switch.toggle
+    entity_id: switch.bathroom_mirror_light
+
+- alias: Bathroom Mirror Light (1)
+  id: 7hk6uflp507r
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 1193c2c9517b67eaa202b5a75a9e8c57
+      command: right_double
+  action:
+    service: switch.toggle
+    entity_id: switch.bathroom_mirror_light
+
+- alias: Bathroom Mirror Light (2)
+  id: a1rf91gu4y43
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 1193c2c9517b67eaa202b5a75a9e8c57
+      command: left_double
+  action:
+    service: switch.toggle
+    entity_id: switch.bathroom_mirror_light
+
+- alias: Bathroom Fan
+  id: 4vezdn7txjel
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 1193c2c9517b67eaa202b5a75a9e8c57
+      command: left_single
+  action:
+    service: switch.toggle
+    entity_id: switch.bathroom_fan
