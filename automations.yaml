@@ -1,4 +1,4 @@
-# Master badroom
+# Main bedroom
 
 - alias: Main bedroom light switch
   id: j33namfxwh55
@@ -10,19 +10,74 @@
       command: single
   action:
     service: switch.toggle
-    entity_id: switch.master_bedroom_light
+    entity_id: switch.main_bedroom_light
 
-- alias: Main bedroom secondary light switch
+- alias: Main bedroom lights switch
+  id: nkgorrj4tye9
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 9d994506ad0dd4863fa3bc326677739a
+      command: double
+  action:
+    service: switch.toggle
+    entity_id: switch.main_bedroom_lights
+
+- alias: Main bedroom light secondary switch
+  id: PAxvmiDnyWzL9
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 495fe74bc4bfa8fa49cca6091e18a17f
+      command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.main_bedroom_light
+
+- alias: Main bedroom lights secondary switch
+  id: nkgorrj4tye1
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 495fe74bc4bfa8fa49cca6091e18a17f
+      command: double
+  action:
+    service: switch.toggle
+    entity_id: switch.main_bedroom_lights
+  # action:
+  #   - service: switch.turn_off
+  #     entity_id: switch.main_bedroom_light
+  #   - service: switch.turn_off
+  #     entity_id: switch.main_bedroom_salt_light
+  #   - service: switch.turn_off
+  #     entity_id: switch.main_standing_light
+
+# - alias: Main bedroom salt light switch
+#   id: C9QJhQFmrKa3
+#   trigger:
+#     platform: event
+#     event_type: zha_event
+#     event_data:
+#       device_id: 360598dfb6fcb29c405664e04c225df5
+#       command: single
+#   action:
+#     service: switch.toggle
+#     entity_id: switch.main_bedroom_salt_light
+
+- alias: Main standing light switch
   id: zpa99yy4rlog
   trigger:
     platform: event
     event_type: zha_event
     event_data:
       device_id: 360598dfb6fcb29c405664e04c225df5
-      command: single
+      command: double
   action:
     service: switch.toggle
-    entity_id: switch.master_bedroom_light
+    entity_id: switch.main_standing_light
 
 # Secondary Bedroom
 
@@ -106,7 +161,7 @@
     service: switch.toggle
     entity_id: switch.upper_hallway_light_b
 
-# Bathroom
+# Bathroom lights
 
 - alias: Bathroom Lights
   id: cjecfw4v5x8g
@@ -117,20 +172,12 @@
       device_id: 1193c2c9517b67eaa202b5a75a9e8c57
       command: right_single
   action:
-    service: switch.toggle
-    entity_id: switch.bathroom_lights
+    - service: switch.toggle
+      entity_id: switch.bathroom_lights
+    - service: switch.toggle
+      entity_id: switch.bathroom_mirror_light
 
-- alias: Bathroom Mirror Light
-  id: d692ybqbogqp
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: 1193c2c9517b67eaa202b5a75a9e8c57
-      command: right_single
-  action:
-    service: switch.toggle
-    entity_id: switch.bathroom_mirror_light
+# Bathroom mirror duplicates
 
 - alias: Bathroom Mirror Light (1)
   id: 7hk6uflp507r
@@ -156,6 +203,8 @@
     service: switch.toggle
     entity_id: switch.bathroom_mirror_light
 
+#  Bathroom Fan
+
 - alias: Bathroom Fan
   id: 4vezdn7txjel
   trigger:
@@ -167,3 +216,66 @@
   action:
     service: switch.toggle
     entity_id: switch.bathroom_fan
+
+#
+# Turn off timer
+#
+
+# Hallway
+
+- alias: Upper hallway Lights A turn-off timer
+  id: d692ybqbogqp
+  trigger:
+    platform: state
+    entity_id: switch.upper_hallway_light_a
+    to: "on"
+    for: "08:00:00"
+  action:
+    - service: switch.toggle
+      entity_id: switch.upper_hallway_light_a
+
+- alias: Upper hallway Lights B turn-off timer
+  id: d692ybq3ogqp
+  trigger:
+    platform: state
+    entity_id: switch.upper_hallway_light_b
+    to: "on"
+    for: "02:00:00"
+  action:
+    - service: switch.toggle
+      entity_id: switch.upper_hallway_light_b
+
+# Bathroom
+
+- alias: Bathroom fan turn-off timer
+  id: luns6gheylze
+  trigger:
+    platform: state
+    entity_id: switch.bathroom_fan
+    to: "on"
+    for: "00:30:00"
+  action:
+    service: switch.turn_off
+    entity_id: switch.bathroom_fan
+
+- alias: Bathroom Lights turn-off timer
+  id: x6h0qk8mw2hc
+  trigger:
+    platform: state
+    entity_id: switch.bathroom_lights
+    to: "on"
+    for: "01:30:00"
+  action:
+    - service: switch.toggle
+      entity_id: switch.bathroom_lights
+
+- alias: Bathroom Mirror Light turn-off timer
+  id: x6h0qk8mwehc
+  trigger:
+    platform: state
+    entity_id: switch.bathroom_mirror_light
+    to: "on"
+    for: "01:30:00"
+  action:
+    - service: switch.toggle
+      entity_id: switch.bathroom_mirror_light
