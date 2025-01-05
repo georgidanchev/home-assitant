@@ -118,23 +118,13 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: e74d662fe4845b8e62b82b85676a4022
-      command: right_single
+      device_id: 70da264e0c2881de681e9bbf5517669b
+      command: single
   action:
-    service: switch.toggle
-    entity_id: switch.living_room_light
-
-- alias: Dining room light switch
-  id: ep1ehalevb6d
-  trigger:
-    platform: event
-    event_type: zha_event
-    event_data:
-      device_id: e74d662fe4845b8e62b82b85676a4022
-      command: left_single
-  action:
-    service: switch.toggle
-    entity_id: switch.dining_room_light
+    - service: switch.toggle
+      entity_id: switch.living_room_light
+    - service: switch.turn_{{ 'on' if is_state('switch.living_room_light', 'off') else 'off' }}
+      entity_id: switch.dining_room_light
 
 #
 #  Hallways
@@ -146,8 +136,8 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 70da264e0c2881de681e9bbf5517669b
-      command: single
+      device_id: e74d662fe4845b8e62b82b85676a4022
+      command: left_single
   action:
     - service: switch.toggle
       entity_id: switch.upper_hallway_light_a
@@ -158,16 +148,14 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 70da264e0c2881de681e9bbf5517669b
-      command: double
+      device_id: e74d662fe4845b8e62b82b85676a4022
+      command: right_single
   action:
     - service: switch.toggle
-      entity_id: switch.staircase_lights
-    - service: switch.turn_{{ 'on' if is_state('switch.upper_hallway_light_a', 'off') else 'off' }}
       entity_id: switch.upper_hallway_light_b
 
 #
-# Bahtroom
+# Bathroom
 #
 
 - alias: Bathroom Lights
