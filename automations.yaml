@@ -1,24 +1,26 @@
-# Main bedroom
+#
+# Bedroom One
+#
 
-- alias: Main bedroom light switch
-  id: j33namfxwh55
+- alias: Main bedroom light primary switch
+  id: PAxvmiD3yWzL9
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 540d87ab8297c93f13f8d8afc230fbb8
+      device_id: ad6ec388637fd6790bd38e29f68b87b5
       command: single
   action:
     service: switch.toggle
     entity_id: switch.main_bedroom_light
 
-- alias: Main bedroom lights switch
-  id: nkgorrj4tye9
+- alias: Main bedroom lights primary switch
+  id: PAxvm2DnyWzL2
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 540d87ab8297c93f13f8d8afc230fbb8
+      device_id: ad6ec388637fd6790bd38e29f68b87b5
       command: double
   action:
     service: switch.toggle
@@ -30,57 +32,27 @@
 #     platform: event
 #     event_type: zha_event
 #     event_data:
-#       device_id: 495fe74bc4bfa8fa49cca6091e18a17f
+#       device_id: b49013218c975c99bdd9b8a61effe9fe
 #       command: single
 #   action:
 #     service: switch.toggle
 #     entity_id: switch.main_bedroom_light
 
 # - alias: Main bedroom lights secondary switch
-#   id: nkgorrj4tye1
+#   id: PAxvmiDnyWzL2
 #   trigger:
 #     platform: event
 #     event_type: zha_event
 #     event_data:
-#       device_id: 495fe74bc4bfa8fa49cca6091e18a17f
+#       device_id: b49013218c975c99bdd9b8a61effe9fe
 #       command: double
 #   action:
 #     service: switch.toggle
 #     entity_id: switch.main_bedroom_lights
 
-# action:
-#   - service: switch.turn_off
-#     entity_id: switch.main_bedroom_light
-#   - service: switch.turn_off
-#     entity_id: switch.main_bedroom_salt_light
-#   - service: switch.turn_off
-#     entity_id: switch.main_standing_light
-
-# - alias: Main bedroom salt light switch
-#   id: C9QJhQFmrKa3
-#   trigger:
-#     platform: event
-#     event_type: zha_event
-#     event_data:
-#       device_id: 360598dfb6fcb29c405664e04c225df5
-#       command: single
-#   action:
-#     service: switch.toggle
-#     entity_id: switch.main_bedroom_salt_light
-
-# - alias: Main standing light switch
-#   id: zpa99yy4rlog
-#   trigger:
-#     platform: event
-#     event_type: zha_event
-#     event_data:
-#       device_id: 360598dfb6fcb29c405664e04c225df5
-#       command: double
-#   action:
-#     service: switch.toggle
-#     entity_id: switch.main_standing_light
-
-# Secondary Bedroom
+#
+# Bedroom TWO
+#
 
 - alias: Secondary bedroom light switch
   id: mhz3qxge98wz
@@ -94,9 +66,39 @@
     service: switch.toggle
     entity_id: switch.secondary_bedroom_light
 
-# Tertiary bedroom
+#
+# Bedroom THREE
+#
 
 - alias: Tertiary bedroom light switch
+  id: nkgorrj4tye1
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: b49013218c975c99bdd9b8a61effe9fe
+      command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.tertiary_bedroom_light
+
+#
+# Kitchen
+#
+
+- alias: Kitchen light switch
+  id: j33namfxwh55
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 540d87ab8297c93f13f8d8afc230fbb8
+      command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.kitchen_lights
+
+- alias: Toilet light switch
   id: iq02a357s9gr
   trigger:
     platform: event
@@ -106,9 +108,9 @@
       command: single
   action:
     service: switch.toggle
-    entity_id: switch.tertiary_bedroom_light
+    entity_id: switch.toilet_lights
 
-# Living room
+# Downstairs
 
 - alias: Living room light switch
   id: lqkvl3n7im71
@@ -122,8 +124,6 @@
     service: switch.toggle
     entity_id: switch.living_room_light
 
-# Dining room
-
 - alias: Dining room light switch
   id: ep1ehalevb6d
   trigger:
@@ -136,33 +136,39 @@
     service: switch.toggle
     entity_id: switch.dining_room_light
 
-# Hallways
+#
+#  Hallways
+#
 
-- alias: Upper hallway light A
+- alias: Upper hallway lights
   id: mnrb533c496s
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: ad6ec388637fd6790bd38e29f68b87b5
+      device_id: 70da264e0c2881de681e9bbf5517669b
       command: single
   action:
-    service: switch.toggle
-    entity_id: switch.upper_hallway_light_a
+    - service: switch.toggle
+      entity_id: switch.upper_hallway_light_a
 
-- alias: Upper hallway light B
-  id: r93teyc350mb
+- alias: Staircase lights
+  id: r93teyc351mb
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: ad6ec388637fd6790bd38e29f68b87b5
+      device_id: 70da264e0c2881de681e9bbf5517669b
       command: double
   action:
-    service: switch.toggle
-    entity_id: switch.upper_hallway_light_b
+    - service: switch.toggle
+      entity_id: switch.staircase_lights
+    - service: switch.turn_{{ 'on' if is_state('switch.upper_hallway_light_a', 'off') else 'off' }}
+      entity_id: switch.upper_hallway_light_b
 
-# Bathroom lights
+#
+# Bahtroom
+#
 
 - alias: Bathroom Lights
   id: cjecfw4v5x8g
@@ -175,10 +181,8 @@
   action:
     - service: switch.toggle
       entity_id: switch.bathroom_lights
-    - service: switch.toggle
+    - service: switch.turn_{{ 'on' if is_state('switch.bathroom_lights', 'off') else 'off' }}
       entity_id: switch.bathroom_mirror_light
-
-# Bathroom mirror duplicates
 
 - alias: Bathroom Mirror Light (1)
   id: 7hk6uflp507r
@@ -204,8 +208,6 @@
     service: switch.toggle
     entity_id: switch.bathroom_mirror_light
 
-#  Bathroom Fan
-
 - alias: Bathroom Fan
   id: 4vezdn7txjel
   trigger:
@@ -219,7 +221,7 @@
     entity_id: switch.bathroom_fan
 
 #
-# Turn off timer
+# Timers
 #
 
 - alias: Kitchen lights turn-off timer
@@ -228,7 +230,7 @@
     platform: state
     entity_id: switch.kitchen_lights
     to: "on"
-    for: "00:45:00"
+    for: 00:45:00
   action:
     service: switch.turn_off
     entity_id: switch.kitchen_lights
@@ -239,7 +241,7 @@
     platform: state
     entity_id: switch.toilet_lights
     to: "on"
-    for: "00:45:00"
+    for: 00:45:00
   action:
     service: switch.turn_off
     entity_id: switch.toilet_lights
@@ -250,7 +252,7 @@
     platform: state
     entity_id: switch.upper_hallway_light_a
     to: "on"
-    for: "08:00:00"
+    for: 08:00:00
   action:
     - service: switch.toggle
       entity_id: switch.upper_hallway_light_a
@@ -261,21 +263,25 @@
     platform: state
     entity_id: switch.upper_hallway_light_b
     to: "on"
-    for: "01:00:00"
+    for: 01:00:00
   action:
     - service: switch.toggle
       entity_id: switch.upper_hallway_light_b
 
-- alias: Bathroom fan turn-off timer
-  id: luns6gheylze
+- id: luns6gheylze
+  alias: Bathroom fan turn-off timer
   trigger:
-    platform: state
-    entity_id: switch.bathroom_fan
-    to: "on"
-    for: "00:45:00"
+    - platform: state
+      entity_id:
+        - switch.bathroom_fan
+      to: "on"
+      for:
+        hours: 0
+        minutes: 30
+        seconds: 0
   action:
-    service: switch.turn_off
-    entity_id: switch.bathroom_fan
+    - entity_id: switch.bathroom_fan
+      action: switch.turn_off
 
 - alias: Bathroom Lights turn-off timer
   id: x6h0qk8mw2hc
@@ -283,7 +289,7 @@
     platform: state
     entity_id: switch.bathroom_lights
     to: "on"
-    for: "01:00:00"
+    for: 01:00:00
   action:
     - service: switch.toggle
       entity_id: switch.bathroom_lights
@@ -294,7 +300,34 @@
     platform: state
     entity_id: switch.bathroom_mirror_light
     to: "on"
-    for: "01:00:00"
+    for: 01:00:00
   action:
     - service: switch.toggle
       entity_id: switch.bathroom_mirror_light
+
+- id: "1723535185253"
+  alias: Bathroom Humidity To Fan
+  description: ""
+  trigger:
+    - type: humidity
+      platform: device
+      device_id: 81e506e1f68144726055c3d4aac7b6e8
+      entity_id: 103a26b3bb82ba7272c4102e9a9a683f
+      domain: sensor
+      above: 90
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 0
+  condition:
+    - condition: device
+      type: is_off
+      device_id: 146b65fc193c36f9f7b87d8b82047c9b
+      entity_id: a22cd065c9ecece129e68641060156b3
+      domain: switch
+  action:
+    - type: turn_on
+      device_id: 146b65fc193c36f9f7b87d8b82047c9b
+      entity_id: a22cd065c9ecece129e68641060156b3
+      domain: switch
+  mode: single
