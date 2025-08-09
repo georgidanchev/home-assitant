@@ -4,7 +4,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: ad6ec388637fd6790bd38e29f68b87b5
+      device_id: def14b393b7b2ce05bff9857a427bc50
       command: single
   action:
     service: switch.toggle
@@ -15,7 +15,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: ad6ec388637fd6790bd38e29f68b87b5
+      device_id: def14b393b7b2ce05bff9857a427bc50
       command: double
   action:
     service: switch.toggle
@@ -26,7 +26,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: d78bce9fdbc85f5ed10b45516b83187a
+      device_id: 276d31dff3e481edccea6f96c93200f6
       command: single
   action:
     service: switch.toggle
@@ -37,7 +37,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: b49013218c975c99bdd9b8a61effe9fe
+      device_id: d2e67c9bed41cb86d2a70e87552a0ea1
       command: single
   action:
     service: switch.toggle
@@ -48,8 +48,8 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 540d87ab8297c93f13f8d8afc230fbb8
-      command: single
+      device_id: 0da9d20c7a0fd3bae7bdff68bcf2487a
+      command: 1_single
   action:
     service: switch.toggle
     entity_id: switch.kitchen_lights
@@ -59,8 +59,8 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: bb2743894f2d6ae4b19e4414207d1075
-      command: single
+      device_id: 3019dee32017b75a30309e7ee4983b06
+      command: 1_single
   action:
     service: switch.toggle
     entity_id: switch.toilet_lights
@@ -70,15 +70,25 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: 70da264e0c2881de681e9bbf5517669b
-      command: single
+      device_id: 587844ccda8e9aac2554807e19738209
+      command: 1_single
   action:
-    - service: switch.toggle
-      entity_id: switch.living_room_light
-    - service:
-        switch.turn_{{ 'on' if is_state('switch.living_room_light', 'off') else
-        'off' }}
-      entity_id: switch.dining_room_light
+  - service: switch.toggle
+    entity_id: switch.living_room_light
+  - service: switch.turn_{{ 'on' if is_state('switch.living_room_light', 'off') else
+      'off' }}
+    entity_id: switch.dining_room_light
+- alias: Dining room light switch
+  id: lqkvl3n7im78
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 587844ccda8e9aac2554807e19738209
+      command: 2_single
+  action:
+  - service: switch.toggle
+    entity_id: switch.dining_room_light
 - alias: Upper hallway lights
   id: mnrb533c496s
   trigger:
@@ -88,41 +98,40 @@
       device_id: e74d662fe4845b8e62b82b85676a4022
       command: left_single
   action:
-    - service: switch.toggle
-      entity_id: switch.upper_hallway_light_a
+  - service: switch.toggle
+    entity_id: switch.upper_hallway_light_a
 - alias: Staircase lights
   id: r93teyc351mb
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: e74d662fe4845b8e62b82b85676a4022
+      device_id: bf07834fc7da3fc458faf265558ac2ee
       command: right_single
   action:
-    - service: switch.toggle
-      entity_id: switch.upper_hallway_light_b
+  - service: switch.toggle
+    entity_id: switch.upper_hallway_light_b
 - alias: Bathroom Lights
   id: cjecfw4v5x8g
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: a0b9e8430e4afb8b894dd09f9ca7ff5b
+      device_id: 69935c12c95a7d338608f0dba4278bca
       command: right_single
   action:
-    - service: switch.toggle
-      entity_id: switch.bathroom_lights
-    - service:
-        switch.turn_{{ 'on' if is_state('switch.bathroom_lights', 'off') else
-        'off' }}
-      entity_id: switch.bathroom_mirror_light
+  - service: switch.toggle
+    entity_id: switch.bathroom_lights
+  - service: switch.turn_{{ 'on' if is_state('switch.bathroom_lights', 'off') else
+      'off' }}
+    entity_id: switch.bathroom_mirror_light
 - alias: Bathroom Mirror Light (1)
   id: 7hk6uflp507r
   trigger:
     platform: event
     event_type: zha_event
     event_data:
-      device_id: a0b9e8430e4afb8b894dd09f9ca7ff5b
+      device_id: 69935c12c95a7d338608f0dba4278bca
       command: right_double
   action:
     service: switch.toggle
@@ -133,7 +142,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: a0b9e8430e4afb8b894dd09f9ca7ff5b
+      device_id: 69935c12c95a7d338608f0dba4278bca
       command: left_double
   action:
     service: switch.toggle
@@ -144,7 +153,7 @@
     platform: event
     event_type: zha_event
     event_data:
-      device_id: a0b9e8430e4afb8b894dd09f9ca7ff5b
+      device_id: 69935c12c95a7d338608f0dba4278bca
       command: left_single
   action:
     service: switch.toggle
@@ -152,120 +161,219 @@
 - id: luns6ghe2lze
   alias: Kitchen lights turn-off timer
   trigger:
-    - platform: state
-      entity_id:
-        - switch.kitchen_lights
-      to: "on"
-      for:
-        hours: 2
-        minutes: 0
-        seconds: 0
+  - platform: state
+    entity_id:
+    - switch.kitchen_lights
+    to: 'on'
+    for:
+      hours: 2
+      minutes: 0
+      seconds: 0
   action:
-    - entity_id: switch.kitchen_lights
-      action: switch.turn_off
+  - entity_id: switch.kitchen_lights
+    action: switch.turn_off
 - id: luns6ahe2lze
   alias: Toilet lights turn-off timer
   trigger:
-    - platform: state
-      entity_id:
-        - switch.toilet_lights
-      to: "on"
-      for:
-        hours: 2
-        minutes: 0
-        seconds: 0
+  - platform: state
+    entity_id:
+    - switch.toilet_lights
+    to: 'on'
+    for:
+      hours: 2
+      minutes: 0
+      seconds: 0
   action:
-    - entity_id: switch.toilet_lights
-      action: switch.turn_off
+  - entity_id: switch.toilet_lights
+    action: switch.turn_off
 - id: d692ybqbogqp
   alias: Upper hallway Lights A turn-off timer
   trigger:
-    - platform: state
-      entity_id:
-        - switch.upper_hallway_light_a
-      to: "on"
-      for:
-        hours: 2
-        minutes: 0
-        seconds: 0
+  - platform: state
+    entity_id:
+    - switch.upper_hallway_light_a
+    to: 'on'
+    for:
+      hours: 2
+      minutes: 0
+      seconds: 0
   action:
-    - entity_id: switch.upper_hallway_light_a
-      action: switch.toggle
+  - entity_id: switch.upper_hallway_light_a
+    action: switch.toggle
 - id: d692ybq3ogqp
   alias: Upper hallway Lights B turn-off timer
   trigger:
-    - platform: state
-      entity_id:
-        - switch.upper_hallway_light_b
-      to: "on"
-      for:
-        hours: 2
-        minutes: 0
-        seconds: 0
+  - platform: state
+    entity_id:
+    - switch.upper_hallway_light_b
+    to: 'on'
+    for:
+      hours: 2
+      minutes: 0
+      seconds: 0
   action:
-    - entity_id: switch.upper_hallway_light_b
-      action: switch.toggle
+  - entity_id: switch.upper_hallway_light_b
+    action: switch.toggle
 - id: luns6gheylze
   alias: Bathroom fan turn-off timer
-  trigger:
-    - platform: state
-      entity_id:
-        - switch.bathroom_fan
-      to: "on"
-      for:
-        hours: 0
-        minutes: 45
-        seconds: 0
-  action:
-    - entity_id: switch.bathroom_fan
-      action: switch.turn_off
+  triggers:
+  - entity_id:
+    - switch.bathroom_fan
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+    trigger: state
+  conditions:
+  - type: is_humidity
+    condition: device
+    device_id: e734e7673e9870a29d24c15ad2116d69
+    entity_id: 8a75cf240c75b2c9a8d572c7bd01c8b9
+    domain: sensor
+    below: 85
+  actions:
+  - entity_id: switch.bathroom_fan
+    action: switch.turn_off
 - alias: Bathroom Lights turn-off timer
   id: x6h0qk8mw2hc
   trigger:
     platform: state
     entity_id: switch.bathroom_lights
-    to: "on"
+    to: 'on'
     for: 01:00:00
   action:
-    - service: switch.toggle
-      entity_id: switch.bathroom_lights
+  - service: switch.toggle
+    entity_id: switch.bathroom_lights
 - id: x6h0qk8mwehc
   alias: Bathroom Mirror Light turn-off timer
   trigger:
-    - platform: state
-      entity_id:
-        - switch.bathroom_mirror_light
-      to: "on"
-      for:
-        hours: 0
-        minutes: 30
-        seconds: 0
+  - platform: state
+    entity_id:
+    - switch.bathroom_mirror_light
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
   action:
-    - entity_id: switch.bathroom_mirror_light
-      action: switch.toggle
-- id: "1723535185253"
+  - entity_id: switch.bathroom_mirror_light
+    action: switch.toggle
+- id: '1723535185253'
   alias: Bathroom Humidity To Fan
-  description: ""
+  description: ''
   triggers:
-    - type: humidity
-      device_id: 81e506e1f68144726055c3d4aac7b6e8
-      entity_id: 103a26b3bb82ba7272c4102e9a9a683f
-      domain: sensor
-      above: 75
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 0
-      trigger: device
+  - type: humidity
+    device_id: e734e7673e9870a29d24c15ad2116d69
+    entity_id: 8a75cf240c75b2c9a8d572c7bd01c8b9
+    domain: sensor
+    trigger: device
+    above: 80
   conditions:
-    - condition: device
-      type: is_off
-      device_id: 146b65fc193c36f9f7b87d8b82047c9b
-      entity_id: a22cd065c9ecece129e68641060156b3
-      domain: switch
+  - condition: device
+    type: is_off
+    device_id: bdb8e97f58ef83e2c04b622334b73ea9
+    entity_id: 92a6b63bb20e5bf28c38ce0cccbc8f7a
+    domain: switch
   actions:
-    - type: turn_on
-      device_id: 146b65fc193c36f9f7b87d8b82047c9b
-      entity_id: a22cd065c9ecece129e68641060156b3
-      domain: switch
+  - type: turn_on
+    device_id: bdb8e97f58ef83e2c04b622334b73ea9
+    entity_id: 92a6b63bb20e5bf28c38ce0cccbc8f7a
+    domain: switch
   mode: single
+
+# - id: '2723535185253'
+#   alias: 4s Light Toggle Automation
+#   mode: single
+#   trigger:
+#   - platform: event
+#     event_type: zha_event
+#     event_data:
+#       device_ieee: 5c:02:72:ff:fe:04:41:eb
+#   action:
+#   - choose:
+#     - conditions:
+#       - condition: template
+#         value_template: '{{ trigger.event.data.cluster_id == 6 and trigger.event.data.command
+#           == ''on'' }}
+
+#           '
+#       sequence:
+#       - service: switch.toggle
+#         target:
+#           entity_id: switch.upper_hallway_light_a
+#     - conditions:
+#       - condition: template
+#         value_template: '{{ trigger.event.data.cluster_id == 8 and (trigger.event.data.args[0]
+#           == 0) }}
+
+#           '
+#       sequence:
+#       - service: switch.toggle
+#         target:
+#           entity_id: switch.upper_hallway_light_b
+#     - conditions:
+#       - condition: template
+#         value_template: '{{ trigger.event.data.cluster_id == 6 and trigger.event.data.command
+#           == ''off'' }}
+
+#           '
+#       sequence:
+#       - service: switch.toggle
+#         target:
+#           entity_id: switch.staircase_lights
+#     - conditions:
+#       - condition: template
+#         value_template: '{{ trigger.event.data.cluster_id == 8 and (trigger.event.data.args[0]
+#           == 1) }}
+
+#           '
+#       sequence:
+#       - service: switch.turn_off
+#         target:
+#           entity_id:
+#           - switch.upper_hallway_light_a
+#           - switch.upper_hallway_light_b
+#           - switch.staircase_lights
+
+- id: 'cfe23816e7c1a5f8996620676a4f96ab'
+  alias: 4s Light Toggle Automation
+  mode: single
+  trigger:
+    - platform: event
+      event_type: zha_event
+      event_data:
+        device_id: cfe23816e7c1a5f8996620676a4f96ab
+  action:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: '{{ trigger.event.data.endpoint_id == 1 }}'
+          sequence:
+            - service: switch.toggle
+              target:
+                entity_id: switch.upper_hallway_light_a
+        - conditions:
+            - condition: template
+              value_template: '{{ trigger.event.data.endpoint_id == 2 }}'
+          sequence:
+            - service: switch.toggle
+              target:
+                entity_id: switch.upper_hallway_light_b
+        - conditions:
+            - condition: template
+              value_template: '{{ trigger.event.data.endpoint_id == 3 }}'
+          sequence:
+            - service: switch.toggle
+              target:
+                entity_id: switch.staircase_lights
+        - conditions:
+            - condition: template
+              value_template: '{{ trigger.event.data.endpoint_id == 4 }}'
+          sequence:
+            - service: switch.turn_off
+              target:
+                entity_id:
+                  - switch.upper_hallway_light_a
+                  - switch.upper_hallway_light_b
+                  - switch.staircase_lights

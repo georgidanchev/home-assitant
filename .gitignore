@@ -3,7 +3,6 @@
 
 # Do not ignore these files
 !automations.yaml
-!configuration.yaml
 !.gitignore
 
 # Allow directory traversal
