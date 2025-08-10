@@ -31,6 +31,17 @@
   action:
     service: switch.toggle
     entity_id: switch.secondary_bedroom_light
+- alias: Secondary bedroom light mini switch
+  id: mhz2qxge93wz
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: f2e7fe4b71f5f4f8c8e14104052b76cd
+      command: single
+  action:
+    service: switch.toggle
+    entity_id: switch.secondary_bedroom_light
 - alias: Tertiary bedroom light switch
   id: nkgorrj4tye1
   trigger:
@@ -72,6 +83,20 @@
     event_data:
       device_id: 587844ccda8e9aac2554807e19738209
       command: 1_single
+  action:
+  - service: switch.toggle
+    entity_id: switch.living_room_light
+  - service: switch.turn_{{ 'on' if is_state('switch.living_room_light', 'off') else
+      'off' }}
+    entity_id: switch.dining_room_light
+- alias: Living room light mini switch
+  id: lqkvl3n4im75
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_id: 2396578dfa55322d4f9e545d8926c6d3
+      command: single
   action:
   - service: switch.toggle
     entity_id: switch.living_room_light
