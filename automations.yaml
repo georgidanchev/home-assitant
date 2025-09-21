@@ -136,8 +136,9 @@
               action: switch.turn_off
               data: {}
   mode: single
-- id: dynamic_bathroom_fan
-  alias: Dynamic Bathroom Fan Control
+- id: auto_bathroom_fan
+  alias: Auto on Bathroom Fan
+  description: ''
   triggers:
     - entity_id:
         - sensor.lumi_lumi_weather_humidity
